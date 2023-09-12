@@ -17,25 +17,27 @@ using namespace std;
 int main() {
     double populationA, growthRateA, populationB, growthRateB;
 
-    // Input initial populations and growth rates
-    cout << "Enter the initial population of town A: ";
+    cout << "Enter the current population of town A: ";
     cin >> populationA;
-    cout << "Enter the growth rate of town A (in decimal form): ";
-    cin >> growthRateA;
-    cout << "Enter the initial population of town B: ";
+    cout << "Enter the current population of town B: ";
     cin >> populationB;
-    cout << "Enter the growth rate of town B (in decimal form): ";
+    cout << "Enter the growth rate of town A: ";
+    cin >> growthRateA;
+    cout << "Enter the growth rate of town B : ";
     cin >> growthRateB;
-
     // Calculate the number of years required
-    double years = (log(populationB) - log(populationA)) / (log(1 + growthRateA) - log(1 + growthRateB));
 
-    // Check if years is a valid number (not NaN or infinity)
-    if (!isnan(years) && !isinf(years) && years >= 0) {
-        // Output the result
-        cout << "It will take approximately " << years << " years for town A's population to surpass or equal town B's population." << endl;
-    } else {
-        cout << "Invalid input. The populations and growth rates provided may not lead to a crossover." << endl;
+    double years = ceil((log(populationB) - log(populationA)) / (log(1 + growthRateA/100) - log(1 + growthRateB/100)));
+    cout << years << endl;
+    // Calculate the number of years required
+    for(int i = 0; i < years; i++) {
+        populationA = floor(populationA*(1+growthRateA/100));
+        populationB = floor(populationB*(1+growthRateB/100));
     }
+
+    cout << "After " << years << " year(s) the population of town A will be greater than or equal to the population of town B" << endl;
+    cout << "After " << years << " population of town A is " << populationA << endl;
+    cout << "After " << years << " population of town B is " << populationB << endl;
+
     return 0;
 }

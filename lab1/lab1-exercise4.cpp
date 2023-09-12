@@ -5,8 +5,14 @@ using namespace std;
 int main() {
     int number;
     char type;
-    int minimum;
-    int balance;
+    double minimum;
+    double balance;
+    const double SAVE_CHARGE = 10;
+    const double CHECKING_CHARGE = 25;
+    const double SAVE_INTEREST = 0.04;
+    const double CHECKING_CHARGE_LOW = 0.03;
+    const double CHECKING_CHARGE_HIGH = 0.05;
+    const double CHECKING_LOW_LIMIT = 5000;
     cout << "please input your account number:" << endl;
     cin >> number;
     cout << "please input your account type:" << endl;
@@ -19,16 +25,16 @@ int main() {
     double fee;
     
     if (balance < minimum) {
-        fee = (type == 'c' || type == 'C') ? 25.0 : 10.0;
+        fee = (type == 'c' || type == 'C') ? CHECKING_CHARGE : SAVE_CHARGE;
         cout << "Account Number: " << number << endl;
         cout << "Account Type: " << type << endl;
         cout << "Current Balance: $" << balance << endl;
         cout << "Service Charge: $" << fee << endl;
     } else {
         if (type == 'c' || type == 'C') {
-            interest = (balance > (minimum + 5000)) ? ((balance - (minimum + 5000)) * 0.05 + (minimum + 5000) * 0.03) : balance * 0.03;
+            interest = (balance > (minimum + CHECKING_LOW_LIMIT)) ? ((balance - (minimum + CHECKING_LOW_LIMIT)) * CHECKING_CHARGE_HIGH + (minimum + 5000) * CHECKING_CHARGE_LOW) : balance * CHECKING_LOW_LIMIT;
         } else {
-            interest = balance * 0.04;
+            interest = balance * SAVE_INTEREST;
         }
 
         cout << "Account Number: " << number << endl;

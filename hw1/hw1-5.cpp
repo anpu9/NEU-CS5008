@@ -24,9 +24,9 @@ int main() {
     int numberOfCopy;
 
     // Prompt the user to enter input
-    cout << "Enter the net price of each copy of the novel: $";
+    cout << "Enter the Price: $";
     cin >> netPrice;
-    cout << "Enter the estimated number of copies that will be sold: ";
+    cout << "Enter the copies: ";
     cin >> numberOfCopy;
 
     const double manuscriptRoyalty = 5000;
@@ -40,22 +40,22 @@ int main() {
     double option3Royalty =
         (numberOfCopy > 4000) ? (4000 * netPrice * basicRate + (numberOfCopy - 4000) * netPrice * highRate) : (numberOfCopy * netPrice * basicRate);
 
-    string bestOption;
+    string bestOption = "O1";
     double highestRoyalty = option1Royalty;
 
     if (option2Royalty > highestRoyalty) {
         highestRoyalty = option2Royalty;
-        bestOption = "Option 2";
+        bestOption = "O2";
     }
 
     if (option3Royalty > highestRoyalty) {
-        bestOption = "Option 3";
+        bestOption = "O3";
     }
 
-    cout << "Royalty for Option 1: $" << option1Royalty << endl;
-    cout << "Royalty for Option 2: $" << option2Royalty << endl;
-    cout << "Royalty for Option 3: $" << option3Royalty << endl;
-    cout << "The best option for the author is " << bestOption << endl;
+    cout << "Option 1: $" << option1Royalty << endl;
+    cout << "Option 2: $" << option2Royalty << endl;
+    cout << "Option 3: $" << option3Royalty << endl;
+    cout << "Best Option: " << bestOption << endl;
 
     return 0;
 }

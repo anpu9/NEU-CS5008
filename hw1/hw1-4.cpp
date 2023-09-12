@@ -17,7 +17,7 @@ int main() {
     string res;
     int num;
     bool isPrime = true;
-    cout << "enter a positive integer between 1 and 1000 (inclusive):" << endl;
+    cout << "Number:" << endl;
     cin >> num;
 
     for (int prime : primes)
@@ -28,7 +28,7 @@ int main() {
         }
     }
     if(isPrime) {
-        cout << "this number is a prime." << endl;
+        cout << "Answers: Yes, it is a prime." << endl;
     } else {
         cout << "this number is not a prime, and it can be divided by " << res << "."<< endl;
     }
