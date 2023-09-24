@@ -3,7 +3,10 @@
 
 using namespace std;
 
+// Function to check if a character is a vowel
 bool isVowel(char ch);
+
+// Function to remove vowels from a string
 void removeVowel(string& s);
 
 int main() {
@@ -11,10 +14,14 @@ int main() {
     cout << "Enter a string: ";
     cin >> s;
     cout << endl;
+
     removeVowel(s);
+
     cout << "After removing vowels: " << s << endl;
     return 0;
 }
+
+// Function to remove vowels from a string
 void removeVowel(string& s) {
     for(int i = 0; i < s.length(); ) {
         if(isVowel(s[i])) {
@@ -24,6 +31,8 @@ void removeVowel(string& s) {
         }
     }
 }
+
+// Function to check if a character is a vowel
 bool isVowel(char ch) {
     switch (ch) {
         case 'A':
@@ -41,4 +50,3 @@ bool isVowel(char ch) {
             return false;
     }
 }
-
